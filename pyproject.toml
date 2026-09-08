@@ -1,9 +1,0 @@
-[project]
-name = "mystery-microbe"
-version = "0.1.0"
-description = "Mystery Microbe"
-readme = "README.md"
-requires-python = ">=3.12"
-dependencies = [
-    "biopython>=1.88",
-]

@@ -3,3 +3,12 @@ data/
 
 # Results
 results/
+
+# Python
+.venv/
+
+# Snakefile
+Snakefile
+
+# Temporary files
+fasterq.tmp.*/
