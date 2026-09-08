@@ -7,8 +7,11 @@ results/
 # Python
 .venv/
 
-# Snakefile
-Snakefile
-
 # Temporary files
 fasterq.tmp.*/
+
+# Pipeline artifacts
+.snakemake/
+
+# Logs
+logs/

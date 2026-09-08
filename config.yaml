@@ -1,0 +1,19 @@
+samples:
+  - SRR2584863
+
+directories:
+  raw: "data/raw"
+  qc: "results/01_qc"
+  trimmed: "results/02_trimmed"
+  subsampled: "results/03_subsampled"
+  assembly: "results/04_assembly"
+  blast: "results/05_blast"
+  annotation: "results/06_annotation"
+  amr: "results/07_amr"
+
+params:
+  download_threads: 4
+  fastqc_threads: 4
+  trim_threads: 4
+  phred_cutoff: 20
+  min_length: 100

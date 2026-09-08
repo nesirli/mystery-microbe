@@ -22,7 +22,7 @@ SPADES_CMD=spades.py
 all: setup download pre_trim_qc trim post_trim_qc subsample assembly blast annotate amr
 
 setup: pull
-	mkdir -p data/raw reference results/{01_qc,02_trimmed,03_subsampled,04_assembly,05_blast,06_annotation,07_amr} scripts
+	mkdir -p data/raw reference results/{01_qc,02_trimmed,03_subsampled,04_assembly,05_blast,06_annotation,07_amr}
 	@echo "Setup complete"
 
 pull:
