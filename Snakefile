@@ -1,5 +1,5 @@
 # Load the configuration file
-configfile: "config.yaml"
+configfile: "config/config.yaml"
 
 
 # Access the variables
@@ -110,8 +110,8 @@ rule post_trim_qc:
         t1=f"{TRIM_DIR}/{{sample}}_1_trimmed.fastq.gz",
         t2=f"{TRIM_DIR}/{{sample}}_2_trimmed.fastq.gz",
     output:
-        html1=f"{QC_DIR}/post_trim/{{sample}}_1_fastqc.html",
-        html2=f"{QC_DIR}/post_trim/{{sample}}_2_fastqc.html",
+        html1=f"{QC_DIR}/post_trim/{{sample}}_1_trimmed_fastqc.html",
+        html2=f"{QC_DIR}/post_trim/{{sample}}_2_trimmed_fastqc.html"
     log:
         "logs/qc/post_trim/{sample}.log",
     conda:
@@ -125,8 +125,8 @@ rule post_trim_qc:
 
 rule post_trim_multi_qc:
     input:
-        html1=expand(f"{QC_DIR}/post_trim/{{sample}}_1_fastqc.html", sample=SAMPLES),
-        html2=expand(f"{QC_DIR}/post_trim/{{sample}}_2_fastqc.html", sample=SAMPLES),
+        html1=expand(f"{QC_DIR}/post_trim/{{sample}}_1_trimmed_fastqc.html", sample=SAMPLES),
+        html2=expand(f"{QC_DIR}/post_trim/{{sample}}_2_trimmed_fastqc.html", sample=SAMPLES),
     output:
         report=f"{QC_DIR}/post_trim/multiqc_report.html",
     log:
@@ -158,10 +158,6 @@ rule subsample:
     threads: config["params"]["subsample_threads"]
     shell:
         """
-        # Note: SeqKit requires careful handling for paired-end data.
-        # A safer tool for paired fastq subsampling is seqtk, or using seqkit with two-pass pairing.
-        # Assuming SeqKit, we must ensure threads are utilized and outputs match:
-
         seqkit sample -p 0.3 -s 42 -j {threads} {input.t1} -o {output.s1} >{log} 2>&1
         seqkit sample -p 0.3 -s 42 -j {threads} {input.t2} -o {output.s2} >>{log} 2>&1
         """
@@ -206,6 +202,7 @@ rule annotate:
         """
         prokka {input.a} \
             --outdir {ANNOTATION_DIR} \
+            --force \
             --prefix {wildcards.sample} \
             --cpus {threads} >{log} 2>&1
         """
