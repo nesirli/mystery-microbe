@@ -14,6 +14,9 @@ directories:
 params:
   download_threads: 4
   fastqc_threads: 4
+  subsample_threads: 4
   trim_threads: 4
   phred_cutoff: 20
   min_length: 100
+  assembly_threads: 4
+  amr_threads: 4
