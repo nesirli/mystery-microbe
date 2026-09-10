@@ -1,3 +1,6 @@
+# macOS
+.DS_Store
+
 # Data files
 data/
 
@@ -18,3 +21,7 @@ logs/
 
 # Generated DAG
 dag.svg
+
+# Downloaded reference databases
+reference/kraken2_db/
+reference/blast_db/
