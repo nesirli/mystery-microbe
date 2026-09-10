@@ -10,8 +10,12 @@ directories:
   blast: "results/05_blast"
   annotation: "results/06_annotation"
   amr: "results/07_amr"
+  kraken2_db: "reference/kraken2_db"
+  blast_db: "reference/blast_db"
+  quast: "results/04_assembly/quast"
 
 params:
+  blast_db: "reference/blast_db/16S_ribosomal_RNA"
   download_threads: 4
   fastqc_threads: 4
   subsample_threads: 4
@@ -19,4 +23,7 @@ params:
   phred_cutoff: 20
   min_length: 100
   assembly_threads: 4
+  kraken2_threads: 4
+  quast_threads: 4
   amr_threads: 4
+  barrnap_threads: 4
