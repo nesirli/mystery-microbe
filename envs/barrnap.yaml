@@ -1,0 +1,9 @@
+name: barrnap_env
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - barrnap=1.10.6
+variables:
+  CONDA_SUBDIR: osx-64

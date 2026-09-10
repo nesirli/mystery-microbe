@@ -1,0 +1,9 @@
+name: bedtools_env
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - bedtools=2.31.1
+variables:
+  CONDA_SUBDIR: osx-64

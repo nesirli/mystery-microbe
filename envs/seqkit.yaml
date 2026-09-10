@@ -1,0 +1,9 @@
+name: seqkit_env
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - seqkit=2.13.0
+variables:
+  CONDA_SUBDIR: osx-64

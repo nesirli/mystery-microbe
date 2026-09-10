@@ -1,0 +1,9 @@
+name: blast_env
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - blast=2.17.0
+variables:
+  CONDA_SUBDIR: osx-64
