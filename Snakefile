@@ -26,6 +26,7 @@ rule all:
         expand(f"{ASSEMBLY_DIR}/{{sample}}_report.txt", sample=SAMPLES),
         expand(f"{QUAST_DIR}/{{sample}}/report.tsv", sample=SAMPLES),
         expand(f"{AMR_DIR}/{{sample}}_amr_results.tsv", sample=SAMPLES),
+        expand(f"{BLAST_DIR}/{{sample}}_16S_blastn.tsv", sample=SAMPLES)
 
 
 include: "rules/01_download.smk"

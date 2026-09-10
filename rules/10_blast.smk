@@ -33,7 +33,7 @@ rule extract_16s:
         """
         awk -F'\\t' '$9 ~ /Name=16S_rRNA/' {input.gff} >{output.gff} 2>{log}
 
-        rm -f {input.a}.fai 2>>{log}
+        rm -f {input.assembly}.fai 2>>{log}
 
         bedtools getfasta \
             -fi {input.assembly} \
