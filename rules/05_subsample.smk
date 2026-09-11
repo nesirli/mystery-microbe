@@ -13,6 +13,6 @@ rule subsample:
     threads: config["params"]["subsample_threads"]
     shell:
         """
-        seqkit sample -p 0.3 -s 42 -j {threads} {input.t1} -o {output.s1} >{log} 2>&1
-        seqkit sample -p 0.3 -s 42 -j {threads} {input.t2} -o {output.s2} >>{log} 2>&1
+        seqkit sample -p 0.7 -s 42 -j {threads} {input.t1} -o {output.s1} >{log} 2>&1
+        seqkit sample -p 0.7 -s 42 -j {threads} {input.t2} -o {output.s2} >>{log} 2>&1
         """
