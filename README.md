@@ -11,28 +11,27 @@ pipeline: download → QC → trim → subsample → assemble → identify.
 
 ## Pipeline
 
-```
-download → pre_trim_qc → trim → post_trim_qc → subsample → assembly
-                                                              ├── kraken
-                                                              ├── quast
-                                                              ├── annotate
-                                                              ├── blast
-                                                              └── amr
+```mermaid
+flowchart LR
+    A[download] --> B[pre_trim_qc] --> C[trim] --> D[post_trim_qc] --> E[subsample] --> F[assembly]
+    F --> G[kraken]
+    F --> H[quast]
+    F --> I[annotate]
+    F --> J[blast]
+    F --> K[amr]
 ```
 
-| Step | Rule(s) | Tool | Output |
-|------|---------|------|--------|
-| 01 Download | `download` | sra-tools | `data/raw/{sample}_{1,2}.fastq.gz` |
-| 02 Pre-trim QC | `pre_trim_qc`, `pre_trim_multi_qc` | fastqc, multiqc | `results/01_qc/pre_trim/` |
-| 03 Trim | `trim` | fastp | `results/02_trimmed/` |
-| 04 Post-trim QC | `post_trim_qc`, `post_trim_multi_qc` | fastqc, multiqc | `results/01_qc/post_trim/` |
-| 05 Subsample | `subsample` | seqkit | `results/03_subsampled/` |
-| 06 Assembly | `assembly` | spades | `results/04_assembly/{sample}_assembled.fasta` |
-| 07 Kraken | `kraken_download`, `kraken_run` | kraken2 | `results/04_assembly/{sample}_report.txt` |
-| 08 QUAST | `quast` | quast | `results/04_assembly/quast/{sample}/report.tsv` |
-| 09 Annotate | `annotate` | prokka | `results/06_annotation/{sample}.gff` |
-| 10 BLAST | `barrnap`, `extract_16s`, `download_16s_db`, `blastn_16s` | barrnap, bedtools, blast | `results/05_blast/{sample}_16S_blastn.tsv` |
-| 11 AMR | `amr` | abricate | `results/07_amr/{sample}_amr_results.tsv` |
+1. **Download** (`download`) — sra-tools → `data/raw/{sample}_{1,2}.fastq.gz`
+2. **Pre-trim QC** (`pre_trim_qc`, `pre_trim_multi_qc`) — fastqc, multiqc → `results/01_qc/pre_trim/`
+3. **Trim** (`trim`) — fastp → `results/02_trimmed/`
+4. **Post-trim QC** (`post_trim_qc`, `post_trim_multi_qc`) — fastqc, multiqc → `results/01_qc/post_trim/`
+5. **Subsample** (`subsample`) — seqkit → `results/03_subsampled/`
+6. **Assembly** (`assembly`) — spades → `results/04_assembly/{sample}_assembled.fasta`
+7. **Kraken** (`kraken_download`, `kraken_run`) — kraken2 → `results/04_assembly/{sample}_report.txt`
+8. **QUAST** (`quast`) — quast → `results/04_assembly/quast/{sample}/report.tsv`
+9. **Annotate** (`annotate`) — prokka → `results/06_annotation/{sample}.gff`
+10. **BLAST** (`barrnap`, `extract_16s`, `download_16s_db`, `blastn_16s`) — barrnap, bedtools, blast → `results/05_blast/{sample}_16S_blastn.tsv`
+11. **AMR** (`amr`) — abricate → `results/07_amr/{sample}_amr_results.tsv`
 
 ## Requirements
 - [Snakemake](https://snakemake.readthedocs.io/) (with conda support)
