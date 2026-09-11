@@ -1,5 +1,15 @@
 # Mystery Microbe
 
+[![Snakemake](https://img.shields.io/badge/snakemake-%E2%89%A57.0-brightgreen.svg?style=flat-square&logo=snakemake&logoColor=white)](https://snakemake.readthedocs.io)
+[![Conda](https://img.shields.io/badge/conda-environments-green.svg?style=flat-square&logo=anaconda&logoColor=white)](https://docs.conda.io)
+[![Platform](https://img.shields.io/badge/Illumina-HiSeq%202500-blue.svg?style=flat-square)](https://www.illumina.com)
+[![SPAdes](https://img.shields.io/badge/SPAdes-4.3.0-blue.svg?style=flat-square)](https://github.com/ablab/spades)
+[![Kraken2](https://img.shields.io/badge/Kraken2-2.17.1-blue.svg?style=flat-square)](https://github.com/DerrickWood/kraken2)
+[![QUAST](https://img.shields.io/badge/QUAST-5.3.0-blue.svg?style=flat-square)](https://github.com/ablab/quast)
+[![Prokka](https://img.shields.io/badge/Prokka-1.15.6-blue.svg?style=flat-square)](https://github.com/tseemann/prokka)
+[![BLAST](https://img.shields.io/badge/BLAST-2.17.0-blue.svg?style=flat-square)](https://blast.ncbi.nlm.nih.gov)
+[![ABRicate](https://img.shields.io/badge/ABRicate-1.4.0-blue.svg?style=flat-square)](https://github.com/tseemann/abricate)
+
 Identify an unknown bacterial isolate from raw Illumina reads using a Snakemake
 pipeline: download → QC → trim → subsample → assemble → identify.
 
